@@ -54,6 +54,7 @@ sun = pygame.image.load("sun.png")
 bbox= pygame.image.load("bbox1.png")
 glasses = pygame.image.load("manglass.png")
 ad = pygame.image.load("ad3.jpg")
+space = pygame.image.load("space.jpg")
 
 num_clouds = 1
 clouds = []
@@ -135,12 +136,6 @@ def draw_bush(x, y):
     pygame.draw.rect(screen, FGREEN, [x + 20, y + 20, 40, 20])
     pygame.draw.ellipse(screen, FGREEN, [x + 25, y, 30, 30])
     pygame.draw.ellipse(screen, FGREEN, [x + 15, y, 30, 30])
-
-
-def draw_shoe(j):
-    x = j[0]
-    y = j[1]
-    ((x + 274,y + 335))
 
 
 
@@ -373,13 +368,8 @@ while not done:
                 pygame.draw.rect(screen, f , [274, 248, 162, 147])
 
         else:
-            x = 274
-            y = 335
-            count2 = 5 
-            while count2 > 0:
-                screen.blit(shoe,(x,y))
-                x +=1
-                count2 -= 1
+          screen.blit(shoe,(274,335))
+                
         
         
           
@@ -413,30 +403,33 @@ while not done:
                 pygame.draw.rect(screen, f , [274, 248, 162, 147])
         else:
 
+                screen.blit(space,(274,248))
                 text = 1
                 font = []
-                for i in range(text):
-                    x = random.randrange(265, 380)
-                    y = random.randrange(250, 270)
-                    t = [x, y]
-                    font.append(t)
+            
+                x = random.randrange(265, 380)
+                y = 250
+                t = [x, y]
+                font.append(t)
 
 
                 def draw_credits(t):
                     x = t[0]
                     y = t[1]
-                    myfont = pygame.font.SysFont("monospace", 25)
+                    myfont = pygame.font.SysFont("monospace", 15)
                 # render text
-                    label = myfont.render("Some text!", 1, (0,0,0))
+                    label = myfont.render("Weather Warning!", 1, (255,0,0))
                     screen.blit(label,t)
                     
 
                 for t in font:
                     t[0] -= 1
-                    if t[0] < 200:
-                       t[0] = random.randrange(274, 380)
-                       t[1] = random.randrange(274, 380)
+                    if t[0] < 1:
+                       t[0] = random.randrange(379, 380)
+                       t[1] = random.randrange(250, 270)
+                    
                     draw_credits(t)
+               
                                   
              
 
@@ -501,11 +494,7 @@ while not done:
     pygame.draw.rect(screen, BLACK, [271, 245, 168, 154],6)
     pygame.draw.rect(screen, GREY, [440, 235, 15, 169])
     pygame.draw.rect(screen, GREY, [255, 236, 15, 167])
-    #pygame.draw.polygon(screen, DAGREY, [[450, 500], [300,500], [500, 200]]) 
-    #pygame.draw.line(screen, GREEN, [300, 40], [100,500], 5)
-   # pygame.draw.ellipse(screen, BLUE, [100, 100, 600, 300])
-    #pygame.draw.polygon(screen, BLACK, [[200, 200], [50,400], [600, 500]], 10)
-   
+       
 
     ''' angles for arcs are measured in radians (a pre-cal topic) '''
     #pygame.draw.arc(screen, ORANGE, [100, 100, 100, 100], 0, math.pi/2, 1)
